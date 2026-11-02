@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7引き算計算</title>
+
+<style>
+body {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    font-size: 20px;
+    padding: 12px 20px;
+    margin: 8px;
+}
+
+input {
+    font-size: 20px;
+    width: 120px;
+    padding: 8px;
+    text-align: center;
+}
+
+#result {
+    font-size: 24px;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>7引き算</h1>
+
+<button onclick="randomNumber()">ランダムに開始</button>
+
+<br>
+
+<input type="number" id="number" min="750" max="999" placeholder="750～999">
+
+<button onclick="calculate()">計算</button>
+
+<div id="result"></div>
+
+<script>
+
+function randomNumber() {
+    const number = Math.floor(Math.random() * 250) + 750;
+    document.getElementById("number").value = number;
+    calculate();
+}
+
+function calculate() {
+
+    let number = Number(document.getElementById("number").value);
+
+    if (number < 750 || number > 999) {
+        document.getElementById("result").innerHTML =
+            "750～999の数字を入力してください。";
+        return;
+    }
+
+    let result = [];
+    
+    while (number >= 0) {
+        result.push(number);
+        number -= 7;
+    }
+
+    document.getElementById("result").innerHTML =
+        result.join(" → ");
+}
+
+</script>
+
+</body>
+</html>
